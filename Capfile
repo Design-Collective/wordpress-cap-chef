@@ -1,9 +1,8 @@
-require 'railsless-deploy'
+# Load DSL and Setup Up Stages
 require 'capistrano/setup'
 
 # Includes default deployment tasks
 require 'capistrano/deploy'
-load 'config/deploy'# Load DSL and Setup Up Stages
 
 require 'capistrano/git'
 require './lib/capistrano/submodule_strategy'
