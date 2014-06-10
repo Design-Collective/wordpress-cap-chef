@@ -1,7 +1,7 @@
 # config valid only for Capistrano 3.1
 lock '3.2.1'
 
-set :application, 'pangolin.com'
+set :application, 'unfoldinnovation.com'
 set :repo_url, 'https://github.com/Design-Collective/unfoldinnovation.git'
 
 
