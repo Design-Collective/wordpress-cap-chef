@@ -15,6 +15,7 @@ set :repo_url, 'https://github.com/Design-Collective/unfoldinnovation.git'
 
 # Default deploy_to directory is /var/www/my_app
 set :deploy_to, '/srv/git'
+set :document_root, '/srv/www'
 set :deploy_via, :copy
 
 # Default value for :scm is :git
@@ -36,18 +37,17 @@ set :user, "www-data"
 set :group, "www-data"
 
 # desc "Change group to www-data"
-task :chown_to_www-data, :roles => [ :app, :db, :web ] do
-   sudo "chown -R #{user}:www-data #{deploy_to}"
-end
+#task :chown_to_www-data, :roles => [ :app, :db, :web ] do
+#   sudo "chown -R #{user}:www-data #{deploy_to}"
+#end
 
 # Default value for :pty is false
 # set :pty, true
 
-# Default value for :linked_files is []
-# set :linked_files, %w{config/database.yml}
-
 # Default value for linked_dirs is []
 # set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+
+set :linked_dirs, %w{wp-content/plugins}
 
 # set :linked_files, %w{wp-config.php}
 #set :linked_dirs, %w{wp-content/plugins}
@@ -59,6 +59,17 @@ end
 set :keep_releases, 5
 
 namespace :deploy do
+
+  desc "Create wordpress symlinks"
+  task :symlink_folders_wordpress do
+    on roles(:web) do
+        #execute "cd '/srv/www/wp-content'"
+        execute "if [[ ! -h #{fetch(:document_root)}/wp-content/themes ]]; then mv #{fetch(:document_root)}/wp-content/themes #{fetch(:document_root)}/wp-content/themes_old && ln -nsf #{fetch(:deploy_to)}/current/wp-content/themes #{fetch(:document_root)}/wp-content/themes; fi"
+    end
+  end
+
+  after :starting, :symlink_folders_wordpress
+
 
   desc 'Restart application'
   task :restart do
@@ -93,11 +104,3 @@ task :check_write_permissions do
     end
   end
 end
-
-task :symlink_folders_wordpress do
-    execute "cd 'srv/www/wp-content'"
-    execute "mv themes themes_old"
-    execute "ln -nsf srv/git/current/wp-content/themes themes"
-end
-
-after("deploy:setup", "symlink_folders_wordpress")
