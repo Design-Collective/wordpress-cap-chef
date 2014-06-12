@@ -40,7 +40,7 @@ You can choose the folder where your repository will be installed on the server,
 
 `$ cap production deploy`
 
-This creates the :deploy_to folder (default: `/srv/git`); on the first run, renames the unversioned wp-content/themes` folder from the document_root into themes_old and symlinks `wp-content/themes` to point to `/srv/git/current/wp-content/themes`, effectively making your themes folder versioned.
+This creates the :deploy_to folder (default: `/srv/git`); on the first run, renames the unversioned `wp-content/themes` folder from the document_root into themes_old and symlinks `wp-content/themes` to point to `/srv/git/current/wp-content/themes`, effectively making your themes folder versioned.
 
 #TODO
 1. Ability to include plugins into a repository for initial deploy. For now, the plugins folder in the repo is linked (persisting across releases).
