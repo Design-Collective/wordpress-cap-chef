@@ -10,7 +10,16 @@ Local Development
 
 This project boilerplate includes a Berkshelf File, Thorfile, Vagrant and Knife.rb. The wp-content-guest is where the synced files (wp-content) files will be located once the VM is deployed.
 
-Just fork our repo and run 
+Just fork our repo and customize the following lines in the Vagrant File
+`config.vm.hostname = "myapp.localhost"`
+&
+`config.vm.network :private_network, ip: "33.33.33.33"`
+
+Run 
+`$ vagrant plugin install vagrant-hostsupdater`
+Will update your etc/hosts file with the hostname and IP address above.
+
+Bring up your new vagrant
 `$ vagrant up`
 
 For mopre information, visit: 
