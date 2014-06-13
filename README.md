@@ -1,7 +1,5 @@
-Unfold Innovation
+A Boilerplate for Wordpress Using Chef, Vagrant and Capistrano
 ==========================
-
-Project repo based on [our wordpress-chef-boilerplate](https://github.com/Design-Collective/wordpress-chef-boilerplate)
 
 You can use this project to get started using [our cookbook](https://github.com/Design-Collective/wordpress-cookbook1/blob/master/README.md).
 
