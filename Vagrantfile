@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
   # please see the online documentation at vagrantup.com.
 
   # NOTE: Set Your Host Name Here
-  #config.vm.hostname = "unfold"
+  config.vm.hostname = "myapp.localhost"
 
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "dc-precise32"
