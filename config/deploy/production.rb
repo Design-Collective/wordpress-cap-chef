@@ -4,8 +4,8 @@
 # server in each group is considered to be the first
 # unless any hosts have the primary property set.
 # Don't declare `role :all`, it's a meta role
-role :app, %w{root@unfold.designcollective.io}
-role :web, %w{root@unfold.designcollective.io}
-role :db,  %w{root@unfold.designcollective.io}
+role :app, %w{root@yourserver.designcollective.io}
+role :web, %w{root@yourserver.designcollective.io}
+role :db,  %w{root@yourserver.designcollective.io}
 
-server 'unfold.designcollective.io', user: 'root', roles: %w{web app}, my_property: :my_value
+server 'yourserver.designcollective.io', user: 'root', roles: %w{web app}, my_property: :my_value
