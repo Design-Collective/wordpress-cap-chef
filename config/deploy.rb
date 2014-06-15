@@ -1,8 +1,8 @@
 # config valid only for Capistrano 3.1
 lock '3.2.1'
 
-set :application, 'unfoldinnovation.com'
-set :repo_url, 'https://github.com/Design-Collective/unfoldinnovation.git'
+set :application, 'example.com'
+set :repo_url, 'https://github.com/Design-Collective/wordpress-cap-chef.git'
 
 
 #set :ssh_options, {
