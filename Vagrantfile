@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
   # please see the online documentation at vagrantup.com.
 
   # NOTE: Set Your Host Name Here
-  config.vm.hostname = "myapp.localhost"
+  config.vm.hostname = "theskinny.prod"
 
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "dc-precise32"
@@ -75,7 +75,7 @@ Vagrant.configure("2") do |config|
   # to skip installing and copying to Vagrant's shelf.
   # config.berkshelf.except = []
   config.vm.provider "virtualbox" do |v|
-    v.name = "wordpress-devops"
+    v.name = "tsc.production"
     v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
   end
@@ -95,7 +95,8 @@ Vagrant.configure("2") do |config|
     }
 
     chef.run_list = [
-        "recipe[wordpress-cookbook1::default]"
+        "recipe[apt::default]",
+        "recipe[wordpress::default]"
     ]
   end
 end
